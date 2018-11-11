@@ -9,9 +9,6 @@ const BuildFile = require('./routes/BuildFile');
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
-
 // mount morgan, morgan is a logger that logs web traffic
 // it gives 5 options as parameters
 app.use(morgan('dev'));
@@ -23,6 +20,9 @@ app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/
 app.use('/js', express.static(path.join(__dirname, '/node_modules/jquery/dist')));
 // popper is inside umd careful
 app.use('/js', express.static(path.join(__dirname, 'node_modules/popper.js/dist/umd')));
+
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 // mount routes
 app.get('/', (req, res) => {
