@@ -7,18 +7,54 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="/css/bootstrap.min.css">
 
-  <title>Document</title>
+  <title>Create your Email Signature</title>
 </head>
 
 <body>
-  <div class="container">
-    <h1>hello</h1>
+  <div class="container mt-5">
+    <div class="jumbotron">
+      <h1 class="title">Complete the fields and get your email signature</h1>
+    </div>
+    <form action="/download" method="POST">
+      <!-- name -->
+      <div class="form-group">
+        <label for="name">Name: </label>
+        <input type="text" class="form-control" placeholder="Enter your Name" name="name" required>
+      </div>
+      <!-- job -->
+      <div class="form-group">
+        <label for="job">Job: </label>
+        <input type="text" class="form-control" placeholder="Enter your job" name="job">
+      </div>
+
+      <!-- phone -->
+      <div class="form-group">
+        <label for="phone">Phone: </label>
+        <input type="text" class="form-control" placeholder="Enter your phone" name="phone">
+      </div>
+
+      <!-- fax -->
+      <div class="form-group">
+        <label for="fax">Fax: </label>
+        <input type="text" class="form-control" placeholder="Enter your fax" name="fax">
+      </div>
+
+
+      <!-- email -->
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+      <!-- web site -->
+      <div class="form-group">
+        <label for="site">web-site</label>
+        <input type="text" class="form-control" placeholder="site" name="site">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
   </div>
-
-  <a href="/download" download>
-    <button>Download</button>
-  </a>
-
 
 
 
@@ -28,6 +64,7 @@
   <script src="js/jquery.min.js"></script>
   <script src="/js/popper.min.js"></script>
   <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/index.js"></script>
 </body>
 
 </html>
