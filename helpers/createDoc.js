@@ -1,6 +1,3 @@
-const fs = require('fs');
-
-
 const createFile = (request) => {
     const page = `<!DOCTYPE html>
     <html style="font-family: Arial;font-weight: 400;color: #4c4c4c;font-size: 14px;">
@@ -130,13 +127,7 @@ const createFile = (request) => {
         </body>
     </html>`;
 
-    fs.writeFileSync('./views/email-signature.html', page, (err) => {
-        if (err) {
-            return console.log(err);
-        }
-
-        console.log('The file was saved!');
-    });
+    return page;
 };
 
 module.exports = createFile;

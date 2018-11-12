@@ -1,12 +1,8 @@
 const express = require('express');
-const createFile = require('../helpers/createDoc');
-
 
 const router = express.Router();
 
-
-router.post('/', (req, res) => {
-    createFile(req.body);
+router.get('/', (req, res) => {
     res.download('./views/email-signature.html');
 });
 

@@ -1,0 +1,57 @@
+<div class="jumbotron">
+  <h1>Your Email signature has been created</h1>
+  <p>Please click download to save it in your computer</p>
+</div>
+<div class="container">
+  <div class="sig-container">
+
+    <div class="person-data" style="margin-bottom: 26px;">
+      <p class="name" style="margin: 0;color: #043144;font-size: 18px;">{{userInfo.name}}</p>
+      <p class="name-label" style="margin: 4px 0;">{{userInfo.job}}</p>
+    </div>
+
+    <div class="contact" style="margin-bottom: 15px;">
+      <table class="contact-table" style="border-collapse: collapse;">
+        <tr>
+          <td style="padding: 4px 0;padding-right: 25px;color: #043144;">Phone</td>
+          <td style="padding: 4px 0;padding-right: 25px;color: #043144;"><a href="{{userInfo.phone}}" class="contact_link"
+              style="text-decoration: none;color: #043144;">{{userInfo.phone}}</a></td>
+        </tr>
+        <tr>
+          <td style="padding: 4px 0;padding-right: 25px;color: #043144;">Fax</td>
+          <td style="padding: 4px 0;padding-right: 25px;color: #043144;">{{userInfo.fax}}</td>
+        </tr>
+        <tr>
+          <td style="padding: 4px 0;padding-right: 25px;color: #043144;">Mail</td>
+          <td style="padding: 4px 0;padding-right: 25px;color: #043144;"><a href="mailto:{{userInfo.email}}" class="contact_link"
+              style="text-decoration: none;color: #043144;">{{userInfo.email}}</a></td>
+        </tr>
+        <tr>
+          <td style="padding: 4px 0;padding-right: 25px;color: #043144;">Web</td>
+          <td style="padding: 4px 0;padding-right: 25px;color: #043144;"><a href="{{userInfo.site}}" target="_blank"
+              class="contact_link" style="text-decoration: none;color: #043144;">{{userInfo.site}}</a></td>
+        </tr>
+      </table>
+    </div>
+    <hr style="border: 0;height: 2px;width: 368px;background-color: #ffef18;margin: 0;margin-bottom: 10px;">
+    <div class="logo-container" style="margin-bottom: 6px;">
+      <table class="logo-table">
+        <tr>
+          <td><img class="logo-lux" src="https://luxstream.de/media/mail/luxstream.png" alt="Luxstream"></td>
+          <td><img class="logo-entega" src="https://luxstream.de/media/mail/entega.png" alt="Entega" style="margin-top: 29px;margin-left: 5px;"></td>
+        </tr>
+      </table>
+    </div>
+    <p class="address" style="margin: 0;padding: 0;">LUXSTREAM GmbH, Hilpertstr. 16-18, 64295 Darmstadt</p>
+    <p class="address-label" style="margin: 4px 0;font-size: 10px;line-height: 12px;">Geschäftsführung: Dipl.-Ing. (FH)
+      Daniel San Jocić (Vorsitzender), Rolf Neubauer</p>
+    <p class="address-label" style="margin: 4px 0;font-size: 10px;line-height: 8px;">Sitz und Registergericht Darmstadt
+      HRB
+      87901</p>
+  </div>
+  {{!-- download signature --}}
+  <form method="get" action="/download" class="mt-5">
+    <button type="submit">Download!</button>
+  </form>
+
+</div>
