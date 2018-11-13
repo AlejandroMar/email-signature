@@ -1,12 +1,12 @@
 const express = require('express');
 const chalk = require('chalk');
-const debug = require('debug')('app');
 const morgan = require('morgan');
 const path = require('path');
 const exphbs = require('express-handlebars');
 
-const DownloadFile = require('./routes/DownloadFile');
-const IndexRoute = require('./routes/IndexRoute');
+const indexRoute = require('./routes/indexRoute');
+const downloadFile = require('./routes/downloadFile');
+const inputForm = require('./routes/inputForm');
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -31,14 +31,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // mount routes
-app.use('/', IndexRoute);
-
-app.use('/download', DownloadFile);
+app.use('/', indexRoute);
+app.use('/input-form', inputForm);
+app.use('/download', downloadFile);
 
 
 app.listen(PORT, () => {
-    // logs as debugger in debugger mode, notice that the start script is in debug mode
-    // so if I run the app in normal mode I wont get any messages
-    // express uses debug too so use it only on app to log less
-    debug(`listening on port ${chalk.yellow(PORT)}`);
+    console.log(`listening on port ${chalk.yellow(PORT)}`);
 });
