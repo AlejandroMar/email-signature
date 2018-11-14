@@ -5,11 +5,17 @@ const UserSignature = require('../models/UserSignature');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    UserSignature.find({ clientName: 'alejo' })
+    UserSignature.find()
         .then((result) => {
-            res.send(`${result[0].emailSignature}`);
+            res.render('clients/clients', { clients: result });
         });
-    // res.send('current clients with sigs');
 });
 
+router.get('/form/:id', (req, res) => {
+    res.render('form/inputForm', { id: req.params.id });
+});
+
+router.post('/form/:id', (req, res) => {
+    res.send(req.params.id);
+});
 module.exports = router;

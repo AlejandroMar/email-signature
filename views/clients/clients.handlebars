@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>Current clients</h1>
+  <div class="list-group">
+    {{#each clients}}
+    <a href="clients/form/{{this._id}}" class="list-group-item list-group-item-action">{{this.clientName}}</a>
+    {{/each}}
+  </div>
+</div>
