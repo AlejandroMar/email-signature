@@ -5,11 +5,11 @@ const { Schema } = mongoose;
 const UserSignatureSchema = new Schema({
     clientName: {
         type: String,
-        required: true,
+        required: true
     },
     emailSignature: {
         type: Buffer,
-        required: true,
+        required: true
     },
 });
 

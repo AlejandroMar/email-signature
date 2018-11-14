@@ -4,14 +4,7 @@ const mongoose = require('mongoose');
 const UserSignatureModel = require('../models/UserSignature');
 
 
-const storage = multer.diskStorage({
-    destination(req, file, cb) {
-        cb(null, './uploads/');
-    },
-    filename(req, file, cb) {
-        cb(null, file.originalname);
-    },
-});
+const storage = multer.memoryStorage();
 
 const upload = multer({ storage });
 
@@ -24,12 +17,12 @@ router.get('/', (req, res) => {
 router.post('/', upload.single('avatar'), (req, res) => {
     new UserSignatureModel({
         clientName: req.body['client-name'],
-        emailSignature: req.file.path,
+        emailSignature: req.file.buffer
     }).save()
-        .then(result => console.log(result));
+        .then(result => console.log('savedto mongo', result));
 
     console.log(req.file);
-    res.send(req.body['client-name']);
+    res.render('index');
 });
 
 module.exports = router;
