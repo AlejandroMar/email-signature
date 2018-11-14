@@ -1,6 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const jsdom = require('jsdom');
 const UserSignature = require('../models/UserSignature');
+
+const { JSDOM } = jsdom;
 
 const router = express.Router();
 
@@ -16,14 +19,20 @@ router.get('/form/:id', (req, res) => {
 });
 
 router.post('/form/:id', (req, res) => {
+    const {
+        name, job, phone, fax, email, site
+    } = req.body;
     (async function mongo() {
         let signature;
         try {
             signature = await UserSignature.findById(req.params.id);
-            res.send(`${signature.emailSignature}`);
+            // res.send(`${signature.emailSignature}`);
+            const { document } = new JSDOM(signature.emailSignature).window;
+            console.log(document.querySelector('.phone').href);
         } catch (err) {
             console.log(err);
         }
     }());
+    res.send('signa');
 });
 module.exports = router;
