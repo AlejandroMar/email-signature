@@ -3,6 +3,8 @@ const chalk = require('chalk');
 const morgan = require('morgan');
 const path = require('path');
 const exphbs = require('express-handlebars');
+const mongoose = require('mongoose');
+
 
 const indexRoute = require('./routes/indexRoute');
 const downloadFile = require('./routes/downloadFile');
@@ -10,6 +12,11 @@ const inputForm = require('./routes/inputForm');
 
 const app = express();
 const PORT = process.env.PORT || 4000;
+
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost:27017/clientSignatures')
+    .then(() => console.log('MongoDB Connected'))
+    .catch(err => console.log(err));
 
 
 app.engine('handlebars', exphbs({
