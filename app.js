@@ -7,8 +7,10 @@ const mongoose = require('mongoose');
 
 
 const indexRoute = require('./routes/indexRoute');
+const clientsSignatures = require('./routes/clientsSignatures');
 const downloadFile = require('./routes/downloadFile');
 const inputForm = require('./routes/inputForm');
+
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -39,6 +41,7 @@ app.use(express.json());
 
 // mount routes
 app.use('/', indexRoute);
+app.use('/signatures', clientsSignatures);
 app.use('/input-form', inputForm);
 app.use('/download', downloadFile);
 

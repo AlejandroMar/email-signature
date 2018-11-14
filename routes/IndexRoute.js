@@ -28,7 +28,7 @@ router.post('/', upload.single('avatar'), (req, res) => {
     }).save()
         .then(result => console.log(result));
 
-    console.log(req.body.file);
+    console.log(req.file);
     res.send(req.body['client-name']);
 });
 
