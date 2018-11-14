@@ -16,6 +16,14 @@ router.get('/form/:id', (req, res) => {
 });
 
 router.post('/form/:id', (req, res) => {
-    res.send(req.params.id);
+    (async function mongo() {
+        let signature;
+        try {
+            signature = await UserSignature.findById(req.params.id);
+            res.send(`${signature.emailSignature}`);
+        } catch (err) {
+            console.log(err);
+        }
+    }());
 });
 module.exports = router;
