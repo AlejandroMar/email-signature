@@ -1,6 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const jsdom = require('jsdom');
+const fs = require('fs');
+
 const UserSignature = require('../models/UserSignature');
 
 const { JSDOM } = jsdom;
@@ -28,11 +30,27 @@ router.post('/form/:id', (req, res) => {
             signature = await UserSignature.findById(req.params.id);
             // res.send(`${signature.emailSignature}`);
             const { document } = new JSDOM(signature.emailSignature).window;
-            console.log(document.querySelector('.phone').href);
+            document.querySelector('.name').textContent = name;
+            document.querySelector('.name-label').textContent = job;
+            document.querySelector('.phone').href = `+${phone}`;
+            document.querySelector('.phone').textContent = `+${phone}`;
+            document.querySelector('.fax').textContent = `+${fax}`;
+            document.querySelector('.email').href = `mailto:${email}`;
+            document.querySelector('.email').textContent = email;
+            document.querySelector('.site').href = site;
+            document.querySelector('.site').textContent = site;
+            const page = `<!DOCTYPE html>
+${document.documentElement.outerHTML}`;
+            fs.writeFile('./uploads/signature.html', page, 'utf8', (err) => {
+                if (err) {
+                    return console.log(err);
+                }
+                console.log('The file was saved!');
+                res.render('signature', { page, id: req.params.id });
+            });
         } catch (err) {
             console.log(err);
         }
     }());
-    res.send('signa');
 });
 module.exports = router;
