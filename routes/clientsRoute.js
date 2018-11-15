@@ -1,5 +1,5 @@
 const express = require('express');
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 const jsdom = require('jsdom');
 const fs = require('fs');
 
@@ -41,7 +41,7 @@ router.post('/form/:id', (req, res) => {
             document.querySelector('.site').textContent = site;
             const page = `<!DOCTYPE html>
 ${document.documentElement.outerHTML}`;
-            fs.writeFile('./uploads/signature.html', page, 'utf8', (err) => {
+            fs.writeFile('./createdFile/email-signature.html', page, 'utf8', (err) => {
                 if (err) {
                     return console.log(err);
                 }
